@@ -27,10 +27,20 @@ public class Uri2602Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 		//Verificando se realmente esta retornando a consulta do banco como o exercicio pede
-		List<CustomerMinProjection> list = repository.search1SQL("RS");
+		List<CustomerMinProjection> list = repository.searchSQL("rs");
 		
 		List<CustomerMinDTO> result1 = list.stream().map(x -> new CustomerMinDTO(x)).collect(Collectors.toList());
+		
+		System.out.printf("\nResultado SQL padrão: \n");
 		for(CustomerMinDTO obj : result1) {
+			System.out.println(obj);
+		}
+		System.out.println("\n\n");
+		
+		List<CustomerMinDTO> result2 = repository.searchJPQL("rs");
+		
+		System.out.printf("\nResultado JPQL: \n");
+		for(CustomerMinDTO obj : result2) {
 			System.out.println(obj);
 		}
 	}
