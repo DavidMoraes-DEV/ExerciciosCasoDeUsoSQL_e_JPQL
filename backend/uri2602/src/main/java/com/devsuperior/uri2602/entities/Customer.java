@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Table(name = "customers")
 public class Customer {
 
-	@Id
+	@Id //Definimos apenas o @Id pois no Script não diz que o id será autoincrementado
 	private Long id;
 	private String name;
 	private String street;
