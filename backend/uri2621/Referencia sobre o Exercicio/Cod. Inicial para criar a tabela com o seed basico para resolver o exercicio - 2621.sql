@@ -39,3 +39,10 @@ VALUES
   
 /*  Execute this query to drop the tables */
 -- DROP TABLE products, providers; -- 
+
+RESOLUÇÃO:
+
+SELECT products.name FROM products -> Seleciona apenas a coluna NAME da TABELA products
+INNER JOIN providers ON products.id_providers = providers.id -> Faz a UNIÃO/PROJEÇÃO entre as duas TABELAS products e providers que corresponde ao definido sendo com os ids igual
+WHERE products.amount BETWEEN 10 AND 20 -> Com o BETWEEN é possível definir o valor que devera ser limitado para buscar entre 10 e 20 
+AND providers.name LIKE 'P%' -> Restringe com LIKE apenas nomes que começa com a letra P, o sinal de % define que pode ser qualquer coisa depois do P
