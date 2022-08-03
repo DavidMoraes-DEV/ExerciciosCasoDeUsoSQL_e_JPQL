@@ -33,3 +33,9 @@ VALUES
 /*  Execute this query to drop the tables */
 -- DROP TABLE movies, genres; --
 
+RESPOSTA CERTA:
+
+SELECT movies.id, movies.name FROM movies -> Seleciona para retornar apenas o id e nome dos filmes da TABLEA movies
+INNER JOIN genres ON movies.id_genres = genres.id -> Une os dados que possui o id_genre(chave estrangeira) da tabela MOVIES iguail ao genres.id da tabela GENRES
+where genres.description = 'Action' -> Restringe para filtrar apenas os que tiver descrição = Action
+
