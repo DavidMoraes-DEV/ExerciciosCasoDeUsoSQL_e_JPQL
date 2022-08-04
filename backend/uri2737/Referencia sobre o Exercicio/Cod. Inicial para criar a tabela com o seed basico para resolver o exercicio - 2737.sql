@@ -20,3 +20,41 @@ CREATE TABLE lawyers(
   
   /*  Execute this query to drop the tables */
   -- DROP TABLE lawyers; --
+
+* SOLUÇÃO 01:
+ 
+ (SELECT name, customers_number FROM lawyers
+ORDER BY customers_number DESC
+LIMIT 1)
+
+UNION ALL
+
+(SELECT name, customers_number FROM lawyers
+ORDER BY customers_number ASC
+LIMIT 1)
+
+UNION ALL
+
+(SELECT 'Average', ROUND(AVG(customers_number), 0)
+FROM lawyers)
+
+* SOLUÇÃO ALTERNATIVA PARA EVITAR O ORDER BY (Comando um pouco PESADO)
+UTILIZANDO OS COMANDOS DO SQL MAX E MIN COMO UMA SUBCONSULTA:
+
+(SELECT name, customers_number FROM lawyers
+WHERE customers_number = (
+    SELECT MAX(customers_number) FROM lawyers
+))
+
+UNION ALL
+
+(SELECT name, customers_number FROM lawyers
+WHERE customers_number = (
+    SELECT MIN(customers_number) FROM lawyers
+))
+
+UNION ALL
+
+(SELECT 'Average', ROUND(AVG(customers_number), 0)
+FROM lawyers)
+ 
